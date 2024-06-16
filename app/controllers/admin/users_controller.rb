@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::UsersController < Admin::BaseController
   def index
     @users = User.all
@@ -13,7 +15,7 @@ class Admin::UsersController < Admin::BaseController
     if @user.save
       redirect_to admin_users_path
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -27,17 +29,17 @@ class Admin::UsersController < Admin::BaseController
     if @user.save
       redirect_to admin_users_path
     else
-      render 'edit'
+      render "edit"
     end
   end
 
   private
-  def user_params
-    params.require(:user)
-          .permit(
-          :name,
-          :email,
-          :password
-          )
-  end
+    def user_params
+      params.require(:user)
+            .permit(
+              :name,
+              :email,
+              :password
+            )
+    end
 end

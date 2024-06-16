@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
   resources :users
 
   namespace :admin do
-    get '/', to: 'dashboard#index', as: 'dashboard'
+    get "/", to: "dashboard#index", as: "dashboard"
     resources :users
   end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

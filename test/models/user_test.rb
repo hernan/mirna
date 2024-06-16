@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
@@ -19,25 +21,25 @@ class UserTest < ActiveSupport::TestCase
     User.create!(
       [
         { name: "John Doe", email: "jdoe@example.com", active: true },
-        { name: "Jane Doe", email: "jane_doe@example.com", active: false },
+        { name: "Jane Doe", email: "jane_doe@example.com", active: false }
       ]
     )
 
     assert_equal 1, User.actives.count
     assert_equal 1, User.inactive.count
-    assert_equal 'John Doe', User.actives.first.name
-    assert_equal 'Jane Doe', User.inactive.first.name
+    assert_equal "John Doe", User.actives.first&.name
+    assert_equal "Jane Doe", User.inactive.first&.name
   end
 
   test "filter admin users" do
     User.create!(
       [
         { name: "John Doe", email: "jdoe@example.com", admin: true },
-        { name: "Jane Doe", email: "jane_doe@example.com", admin: false },
+        { name: "Jane Doe", email: "jane_doe@example.com", admin: false }
       ]
     )
 
     assert_equal 1, User.admins.count
-    assert_equal 'John Doe', User.admins.first.name
+    assert_equal "John Doe", User.admins.first&.name
   end
 end

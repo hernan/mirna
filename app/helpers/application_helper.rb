@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def ftext(form, field, label:)
     tag.div class: "mt-4" do
