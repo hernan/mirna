@@ -1,0 +1,12 @@
+<% url = @user.persisted? ? admin_user_path(@user) : admin_users_path %>
+<%= form_with model: @user, url: url do |f| %>
+  <%= ftext(f, :name, label: "Name") %>
+  <%= ftext(f, :email, label: "Email") %>
+  <%= fpassword(f, :password, label: "Password") %>
+
+  <div class="grid">
+    <div><%= fsubmit(f, label: "Save") %></div>
+    <div><%= link_to "Cancel", admin_users_path %></div>
+    <div>&nbsp;</div>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+:root {
+    --pico-font-size: 16px;
+}
+
+header, main, footer {
+    padding: 0 10px;
+}
