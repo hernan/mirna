@@ -1,5 +1,6 @@
-<% url = @user.persisted? ? admin_user_path(@user) : admin_users_path %>
-<%= form_with model: @user, url: url do |f| %>
+<% url = user.persisted? ? admin_user_path(user) : admin_users_path %>
+
+<%= form_with model: user, url: url do |f| %>
   <%= ftext(f, :name, label: "Name") %>
   <%= ftext(f, :email, label: "Email") %>
   <%= fpassword(f, :password, label: "Password") %>

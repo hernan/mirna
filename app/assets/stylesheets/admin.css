@@ -5,3 +5,6 @@
 header, main, footer {
     padding: 0 10px;
 }
+.form-errors-details {
+    color: red;
+}

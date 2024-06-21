@@ -2,32 +2,41 @@
 
 module ApplicationHelper
   def ftext(form, field, label:)
-    tag.div class: "mt-4" do
-      concat(form.label(field, label, class: "form-label"))
-      concat(form.text_field(field, class: "form-field"))
-      concat(form_error_message(form, field))
+    tag.div class: "form-field-group" do
+      options = {}
+      options["aria-invalid"] = true if has_error?(form, field)
+
+      concat form.label(field, label)
+      concat form.text_field(field, options)
+      concat form_error_message(form, field)
     end
   end
 
   def fselect(form, field, label:, options:)
-    tag.div class: "mt-4" do
-      concat(form.label(field, label, class: "form-label"))
-      concat(form.select(field, options))
-      concat(form_error_message(form, field))
+    tag.div class: "form-field-group" do
+      html_options = {}
+      html_options["aria-invalid"] = true if has_error?(form, field)
+
+      concat form.label(field, label)
+      concat form.select(field, options, html_options)
+      concat form_error_message(form, field)
     end
   end
 
   def fsubmit(form, label:, kind: "btn-primary")
-    tag.div class: "mt-4" do
-      concat(form.submit(label, class: kind))
+    tag.div class: "form-field-group" do
+      concat form.submit(label, class: kind)
     end
   end
 
   def fpassword(form, field, label:)
-    tag.div class: "mt-4" do
-      concat(form.label(field, label, class: "form-label"))
-      concat(form.password_field(field, class: "form-field"))
-      concat(form_error_message(form, field))
+    tag.div class: "form-field-group" do
+      options = {}
+      options["aria-invalid"] = true if has_error?(form, field)
+
+      concat form.label(field, label)
+      concat form.password_field(field, options)
+      concat form_error_message(form, field)
     end
   end
 
@@ -36,7 +45,7 @@ module ApplicationHelper
 
     tag.div class: "my-4 pb-2" do
       flash.each do |name, message|
-        concat(tag.p(message, class: "flash-msg-#{name}"))
+        concat tag.p(message, class: "flash-msg-#{name}")
       end
     end
   end
@@ -44,8 +53,12 @@ module ApplicationHelper
   def form_error_message(form, field)
     return if form.object&.errors&.[](field).blank?
 
-    tag.div class: "text-xs text-red-700" do
-      concat(form.object.errors[field].join(", "))
+    tag.small do
+      concat form.object.errors[field].join(", ")
     end
+  end
+
+  def has_error?(form, field)
+    form.object.errors[field].present?
   end
 end

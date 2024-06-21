@@ -5,6 +5,10 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Override how form with errors are rendered
+  # default to Proc.new { |html_tag, _instance| content_tag :div, html_tag, class: "field_with_errors" }
+  config.action_view.field_error_proc = Proc.new { |html_tag, _instance| html_tag }
+
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.

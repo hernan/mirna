@@ -2,7 +2,8 @@
 
 <% if @users.empty? %>
   <p>No users found, create a <%= link_to 'new', new_admin_user_path %> one</p>
-<%else %>
+<% else %>
+<p><%= link_to "Add User", new_admin_user_path %></p>
   <table>
     <thead>
       <tr>
