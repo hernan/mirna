@@ -1,0 +1,35 @@
+<h2>Customers</h2>
+
+<% if customers.empty? %>
+  <p>No customers found, create a <%= link_to 'Create the first one', new_admin_customer_path %></p>
+<% else %>
+  <p><%= link_to "Add Customer", new_admin_customer_path %></p>
+  <table class="striped">
+    <thead data-theme="dark">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Host</th>
+        <th>Active</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.phone %></td>
+        <td><%= customer.host %></td>
+        <td><%= customer.active %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_customer_path(customer) %>
+          &nbsp;
+          <%= link_to "Remove", admin_customer_path(customer), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
