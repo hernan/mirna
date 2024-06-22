@@ -1,9 +1,25 @@
 <% url = user.persisted? ? admin_user_path(user) : admin_users_path %>
-
 <%= form_with model: user, url: url do |f| %>
-  <%= ftext(f, :name, label: "Name") %>
-  <%= ftext(f, :email, label: "Email") %>
-  <%= fpassword(f, :password, label: "Password") %>
+  <fieldset>
+    <div class="grid">
+      <div>
+        <%= ftext(f, :name, label: "Name") %>
+        <%= ftext(f, :email, label: "Email") %>
+        <%= fpassword(f, :password, label: "Password") %>
+
+        <label>
+          <%= f.check_box :admin, role: :switch %>
+          Is Admin
+        </label>
+
+        <label>
+          <%= f.check_box :active, role: :switch %>
+          Is Active
+        </label>
+      </div>
+      <div><!-- Empty column --></div>
+    </div>
+  </fieldset>
 
   <div class="grid">
     <div><%= fsubmit(f, label: "Save") %></div>

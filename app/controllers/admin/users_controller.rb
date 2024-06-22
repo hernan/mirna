@@ -30,11 +30,18 @@ class Admin::UsersController < Admin::BaseController
   def update
     user = User.find(params[:id])
 
-    if user.save
+    if user.update(user_params)
       redirect_to admin_users_path
     else
-      render "edit", locals: { user: }
+      render "edit", locals: { user: }, status: :unprocessable_content
     end
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+
+    redirect_to admin_users_path
   end
 
   private
@@ -43,7 +50,9 @@ class Admin::UsersController < Admin::BaseController
             .permit(
               :name,
               :email,
-              :password
+              :password,
+              :active,
+              :admin
             )
     end
 end
