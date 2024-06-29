@@ -20,8 +20,8 @@ class UserTest < ActiveSupport::TestCase
   test "filter active/inactive users" do
     User.create!(
       [
-        { name: "John Doe", email: "jdoe@example.com", active: true },
-        { name: "Jane Doe", email: "jane_doe@example.com", active: false }
+        { name: "John Doe", email: "jdoe@example.com", active: true, password: "some_password" },
+        { name: "Jane Doe", email: "jane_doe@example.com", active: false, password: "some_other_password" }
       ]
     )
 
@@ -34,8 +34,8 @@ class UserTest < ActiveSupport::TestCase
   test "filter admin users" do
     User.create!(
       [
-        { name: "John Doe", email: "jdoe@example.com", admin: true },
-        { name: "Jane Doe", email: "jane_doe@example.com", admin: false }
+        { name: "John Doe", email: "jdoe@example.com", admin: true, password: "some_password" },
+        { name: "Jane Doe", email: "jane_doe@example.com", admin: false, password: "some_other_password" }
       ]
     )
 

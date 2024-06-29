@@ -5,5 +5,5 @@ class Customer < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :host, uniqueness: true, allow_nil: true
+  validates :host, uniqueness: true, allow_blank: true
 end
