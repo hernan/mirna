@@ -19,10 +19,10 @@
     <% customers.each do |customer| %>
       <tr>
         <td><%= customer.name %></td>
-        <td><%= customer.email %></td>
-        <td><%= customer.phone %></td>
+        <td><%= mail_to customer.email %></td>
+        <td><%= phone_to customer.phone %></td>
         <td><%= customer.host %></td>
-        <td><%= customer.active %></td>
+        <td><%= link_to (customer.active ? "Yes" : "No"), toggle_active_admin_customer_path(customer), data: { turbo_method: :post } %></td>
         <td>
           <%= link_to "Edit", edit_admin_customer_path(customer) %>
           &nbsp;

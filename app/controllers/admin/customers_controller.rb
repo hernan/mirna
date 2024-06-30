@@ -40,6 +40,13 @@ class Admin::CustomersController < Admin::BaseController
     redirect_to admin_customers_path, notice: "Customer destroyed"
   end
 
+  def toggle_active
+    customer = Customer.find(params[:id])
+    customer.toggle!(:active)
+
+    redirect_to admin_customers_path, notice: "Customer updated"
+  end
+
   private
     def customer_params
       params.require(:customer)
