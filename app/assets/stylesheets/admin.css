@@ -8,3 +8,25 @@ header, main, footer {
 .form-errors-details {
     color: red;
 }
+
+.inline-edit-form {
+    display: none;
+}
+
+.inline-edit-form .form-group {
+    display: flex;
+    align-items: center;
+}
+
+.inline-edit-form .form-group input {
+    padding: 2px 4px;
+    margin: 0;
+    height: auto;
+}
+
+.inline-edit-form .controls {
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    font-size: 13px;
+}

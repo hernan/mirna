@@ -1,6 +1,6 @@
 <h2>Customers</h2>
 
-<% if customers.empty? %>
+<% if customers.length.zero? %>
   <p>No customers found, create a <%= link_to 'Create the first one', new_admin_customer_path %></p>
 <% else %>
   <p><%= link_to "Add Customer", new_admin_customer_path %></p>
@@ -21,7 +21,7 @@
         <td><%= customer.name %></td>
         <td><%= mail_to customer.email %></td>
         <td><%= phone_to customer.phone %></td>
-        <td><%= customer.host %></td>
+        <td width="200px"><%= inline_edit customer, :host %></td>
         <td><%= link_to (customer.active ? "Yes" : "No"), toggle_active_admin_customer_path(customer), data: { turbo_method: :post } %></td>
         <td>
           <%= link_to "Edit", edit_admin_customer_path(customer) %>
