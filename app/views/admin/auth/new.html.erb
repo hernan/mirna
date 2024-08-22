@@ -1,0 +1,5 @@
+<%= form_with url: admin_login_path do |f| %>
+  <%= ftext f, :email, label: "Email" %>
+  <%= fpassword f, :password, label: "Password" %>
+  <%= fsubmit f, label: "Login" %>
+<% end %>

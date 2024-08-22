@@ -7,8 +7,8 @@
   <%= csp_meta_tag %>
   <link
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.indigo.min.css"
-    />
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+  >
   <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
 </head>
@@ -17,18 +17,23 @@
     <header>
       <nav>
         <ul>
-          <li>Admin</li>
+          <li class="logo">Admin</li>
         </ul>
+        <% if signed_in? %>
         <ul>
           <li><%= link_to "Home", admin_dashboard_path %></li>
           <li><%= link_to "Customers", admin_customers_path %></li>
           <li><%= link_to "Users", admin_users_path %></li>
+          <li><%= link_to "Logout", admin_logout_path, data: { turbo_method: :delete } %></li>
         </ul>
+        <% end %>
       </nav>
     </header>
+
     <main>
       <%= yield %>
     </main>
+
     <footer></footer>
 </body>
 </html>

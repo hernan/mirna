@@ -1,5 +1,5 @@
-<% url = user.persisted? ? admin_user_path(user) : admin_users_path %>
-<%= form_with model: user, url: url do |f| %>
+<% url = @user.persisted? ? admin_user_path(@user) : admin_users_path %>
+<%= form_with model: @user, url: url do |f| %>
   <fieldset>
     <div class="grid">
       <div>

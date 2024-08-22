@@ -59,6 +59,8 @@ module ApplicationHelper
   end
 
   def has_error?(form, field)
+    return if form.object.blank?
+
     form.object.errors[field].present?
   end
 

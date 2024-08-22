@@ -11,4 +11,8 @@ class User < ApplicationRecord
   scope :actives, -> { where(active: true) }
   scope :inactive, -> { where(active: false) }
   scope :admins, -> { where(admin: true) }
+
+  def is_admin?
+    admin?
+  end
 end

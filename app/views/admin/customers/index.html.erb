@@ -1,6 +1,6 @@
 <h2>Customers</h2>
 
-<% if customers.length.zero? %>
+<% if @customers.length.zero? %>
   <p>No customers found, create a <%= link_to 'Create the first one', new_admin_customer_path %></p>
 <% else %>
   <p><%= link_to "Add Customer", new_admin_customer_path %></p>
@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-    <% customers.each do |customer| %>
+    <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.name %></td>
         <td><%= mail_to customer.email %></td>

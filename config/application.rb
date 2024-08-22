@@ -2,7 +2,27 @@
 
 require_relative "boot"
 
-require "rails/all"
+# rubocop:disable Style/RedundantBegin
+# require "rails/all"
+require "rails"
+[
+  "active_record/railtie",
+  "active_storage/engine",
+  "action_controller/railtie",
+  "action_view/railtie",
+  "action_mailer/railtie",
+  "active_job/railtie",
+  # "action_cable/engine",
+  # "action_mailbox/engine",
+  # "action_text/engine",
+  "rails/test_unit/railtie",
+].each do |railtie|
+  begin
+    require railtie
+  rescue LoadError
+  end
+end
+# rubocop:enable Style/RedundantBegin
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -16,7 +36,7 @@ module Full
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w[assets tasks])
+    # config.autoload_lib(ignore: %w[assets tasks])
 
     # Configuration for the application, engines, and railties goes here.
     #

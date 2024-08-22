@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/", to: "dashboard#index", as: "dashboard"
+    get "/login", to: "auth#new", as: "login"
+    post "/login", to: "auth#create"
+    delete "/logout", to: "auth#delete", as: "logout"
+
     resources :users
     resources :customers do
       member do
