@@ -2,10 +2,9 @@
 
 source "https://rubygems.org"
 
-ruby "3.3.3"
+ruby file: ".ruby-version"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.3", ">= 7.1.3.4"
+gem "rails", "~> 7.2.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
