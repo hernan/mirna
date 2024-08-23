@@ -4,7 +4,9 @@ class Admin::AuthController < Admin::BaseController
   skip_before_action :authenticate_admin_user, only: [:new, :create]
 
   def new
-    # @user = User.new
+    return redirect_to :admin_dashboard if signed_in?
+
+    @user = User.new
   end
 
   def create
@@ -21,7 +23,7 @@ class Admin::AuthController < Admin::BaseController
 
   def delete
     logout
-    redirect_to :admin_dashboard
+    redirect_to :admin_login
   end
 
   private
