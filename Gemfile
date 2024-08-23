@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby file: ".ruby-version"
 
-gem "rails", "~> 7.2.0"
+gem "rails", "~> 7.2.1"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
