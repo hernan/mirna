@@ -42,5 +42,8 @@ module Full
     # config.time_zone = "Central Time (US & Canada)"
     config.generators.assets = false
     config.generators.helper = false
+
+    # Proc.new { |html_tag, instance| content_tag :div, html_tag, class: "field_with_errors" }
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end
