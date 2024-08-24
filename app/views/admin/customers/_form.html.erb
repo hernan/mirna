@@ -1,25 +1,15 @@
 <% url = @customer.persisted? ? admin_customer_path(@customer) : admin_customers_path %>
 <%= form_with model: @customer, url: url do |f| %>
   <fieldset>
-    <div class="grid">
-      <div>
-        <%= ftext(f, :name, label: "Name") %>
-        <%= ftext(f, :email, label: "Email") %>
-        <%= ftext(f, :phone, label: "Phone") %>
-        <%= ftext(f, :host, label: "Host") %>
-
-        <label>
-          <%= f.check_box :active, role: :switch %>
-          Is Active
-        </label>
-      </div>
-      <div><!-- Empty column --></div>
-    </div>
+    <%= f.text_field :name, label: "Name" %>
+    <%= f.text_field :email, label: "Email" %>
+    <%= f.text_field :phone, label: "Phone" %>
+    <%= f.text_field :host, label: "Host" %>
+    <%= f.check_box :active, label: "Is Active", role: :switch %>
   </fieldset>
 
-  <div class="grid">
-    <div><%= fsubmit(f, label: "Save") %></div>
+  <div class="fgrid">
+    <div><%= f.submit "Save" %></div>
     <div><%= link_to "Cancel", admin_customers_path %></div>
-    <div>&nbsp;</div>
   </div>
 <% end %>

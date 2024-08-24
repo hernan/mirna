@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::BaseController < ActionController::Base
+  default_form_builder MyFormBuilder
   before_action :authenticate_admin_user
   layout "admin"
 
