@@ -6,13 +6,15 @@ module SessionsHelper
   end
 
   def login(user)
-    post admin_login_url, params: { email: user.email, password: "password" }
+    post admin_login_url, params: { user: { email: user.email, password: "password" } }
     # assert_predicate cookies[:session_token], :present?
+    assert_predicate session[:user_id], :present?
   end
 
   def logout
     delete admin_logout_url
-    assert_not cookies[:session_token].present?
+    # assert_not cookies[:session_token].present?
+    assert_predicate session[:user_id], :blank?
   end
 
   def admin_user

@@ -1,5 +1,8 @@
-<%= form_with model: @user, url: admin_login_path do |f| %>
-  <%= ftext f, :email, label: "Email" %>
-  <%= fpassword f, :password, label: "Password" %>
-  <%= fsubmit f, label: "Login" %>
-<% end %>
+<div class="login-form">
+  <%= show_message %>
+  <%= form_with model: @user, url: admin_login_path do |f| %>
+    <%= f.text_field :email, label: "Email" %>
+    <%= f.password_field :password, label: "Password" %>
+    <%= f.submit "Login" %>
+  <% end %>
+</div>

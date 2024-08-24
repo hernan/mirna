@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  def show_message
+    if flash[:notice]
+      tag.div(flash[:notice], class: "alert alert-success")
+    elsif flash[:error]
+      tag.div(flash[:error], class: "alert alert-danger")
+    end
+  end
+
   def inline_edit(object, field)
     link_data = object[field].blank? ? "blank" : object[field]
     tag.span(class: "inline-edit", data: { controller: "iedit" }) do
